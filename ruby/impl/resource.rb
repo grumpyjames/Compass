@@ -19,5 +19,6 @@ class Resource
     :sea => SEA,
     :desert => DESERT
   }
+  NAMES = CONFIG_HASH.invert
 end
   

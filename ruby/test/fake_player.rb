@@ -31,7 +31,7 @@ class FakePlayer
     @prompted = true
     puts question
     options.each do |option|
-      puts option[0].to_s + ": " + option[1].to_s 
+      puts option[0].to_s + ": " + option[1].to_s + (option[2] ? " " + option[2].to_s : "")
     end
     @response_index+=1
     return @responses[@response_index] ? @responses[@response_index]:"r"

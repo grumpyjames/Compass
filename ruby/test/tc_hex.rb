@@ -235,6 +235,12 @@ class TC_Hex < Test::Unit::TestCase
   rescue ArgumentError
     assert(true)
   end
+
+  def test_to_s
+    hex_to_test = Hex.new([], Resource::WOOL, 3)
+    expected = "Res: Wool, Trig: 3"
+    assert(hex_to_test.to_s==expected,"Hex to_s produced this: " + hex_to_test.to_s + " . Expected was " + expected) 
+  end
   
 end
 

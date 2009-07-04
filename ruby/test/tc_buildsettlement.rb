@@ -19,7 +19,7 @@ class TC_BuildSettlementAction < Test::Unit::TestCase
     options
   end
   
-  def testActionPromptsCorrectly
+  def test_action_prompts_correctly
     action_to_test = BuildSettlementAction.new
     fake_player = FakePlayer.new
     fake_player.add_responses(["1","2","4"])
@@ -33,13 +33,22 @@ class TC_BuildSettlementAction < Test::Unit::TestCase
     fake_board.hexes = [[nil,fake_hex,nil],[],[]]
     action_to_test.execute(fake_player, fake_board)
     assert(fake_player.options[0]==build_options("Row",3))
-    assert(fake_player.options[1]==build_options("Hex",3))
-    assert(fake_player.options[2]==[["4","Vertex 4"]], "Should only be prompted to build on valid vertices")
+    check_useful_options(fake_player.options[1],build_options("Hex",3),"")
+    check_useful_options(fake_player.options[2],[["4","Vertex 4"]], "Should only be prompted to build on valid vertices")
     assert(fake_vertex.building.type==BuildingType::SETTLEMENT)
     assert(fake_vertex.building.owner==fake_player)
     assert(fake_player.resources[Resource::WOOL]=-1)
     assert(fake_player.resources[Resource::GRAIN]=-1)
     assert(fake_player.resources[Resource::LUMBER]=-1)
     assert(fake_player.resources[Resource::BRICK]=-1)
+  end
+
+  def check_useful_options(result, expected, error_message)
+    i =0
+    expected.each do |option|
+      assert(option[0]==result[i][0], error_message)
+      assert(option[1]==result[i][1], error_message)
+      i+=1
+    end
   end
 end

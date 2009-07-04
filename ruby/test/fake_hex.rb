@@ -66,4 +66,8 @@ class FakeHex
     @vertices.include?(a_vertex)
   end
 
+  def to_s
+    "Res: " + Resource::NAMES[@resource].to_s.capitalize + ", Trig: " + @trigger.to_s
+  end
+
 end

@@ -52,5 +52,9 @@ class Hex
   def edge_connecting (head_vertex_index, tail_vertex_index)
     @vertices[head_vertex_index].get_connection_to(@vertices[tail_vertex_index])
   end
+
+  def to_s
+    "Res: " + Resource::NAMES[@resource].to_s.capitalize + ", Trig: " + @trigger.to_s
+  end
   
 end

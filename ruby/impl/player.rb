@@ -80,7 +80,7 @@ class Player
   def to_display_string(options)
     to_put_out = ""
     options.each do |option|
-      to_put_out << option[0].to_s << ": " << option[1] << ", "
+      to_put_out << option[0].to_s << ": " << option[1] << ", " << (option[2] ? option[2].to_s : "")
     end
     to_put_out[0..(to_put_out.length-3)]
   end
