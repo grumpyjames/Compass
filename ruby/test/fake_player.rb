@@ -5,6 +5,7 @@ class FakePlayer
     @options = []
     @responses = []
     @response_index = -1
+    @buildable_vertices = Hash.new(false)
   end
   def receive(resource, quantity)
     @resources[resource] += quantity    
@@ -43,5 +44,11 @@ class FakePlayer
   end
   def questions
     @questions
-  end	
+  end
+  def allow_build_on(vertex)
+    @buildable_vertices[vertex] = true
+  end
+  def can_build_on_vertex(vertex)
+    @buildable_vertices[vertex]
+  end
 end

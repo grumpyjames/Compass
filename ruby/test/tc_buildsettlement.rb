@@ -26,12 +26,15 @@ class TC_BuildSettlementAction < Test::Unit::TestCase
     fake_board = FakeBoard.new
     fake_board.set_dimensions(3,3)
     fake_vertex = FakeVertex.new
-    fake_hex = FakeHex.new(Resource::WOOL, 5, [nil,nil,nil,fake_vertex,nil,nil])
+    fake_player.allow_build_on(fake_vertex)
+    cannot_build_on_this_vertex = FakeVertex.new
+    fake_hex = FakeHex.new(Resource::WOOL, 5, [cannot_build_on_this_vertex,cannot_build_on_this_vertex,cannot_build_on_this_vertex,
+                                               fake_vertex,cannot_build_on_this_vertex,cannot_build_on_this_vertex])
     fake_board.hexes = [[nil,fake_hex,nil],[],[]]
     action_to_test.execute(fake_player, fake_board)
     assert(fake_player.options[0]==build_options("Row",3))
     assert(fake_player.options[1]==build_options("Hex",3))
-    assert(fake_player.options[2]==build_options("Vertex",6))
+    assert(fake_player.options[2]==[["4","Vertex 4"]], "Should only be prompted to build on valid vertices")
     assert(fake_vertex.building.type==BuildingType::SETTLEMENT)
     assert(fake_vertex.building.owner==fake_player)
     assert(fake_player.resources[Resource::WOOL]=-1)
