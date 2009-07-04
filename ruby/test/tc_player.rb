@@ -72,10 +72,14 @@ class TC_player < Test::Unit::TestCase
       player_to_test = Player.new
       0.upto(required_array.length-2) do |i|
         player_to_test.receive(required_array[i][0], required_array[i][1])
-        assert(!player_to_test.can_buy?(cost_key), 'Cannot develop without resource type ' + required_array.last[0].to_s)
+        puts player_to_test.resources.to_s
+        puts required_array[i].to_s
+        if (required_array[i+1][1] > 0)
+          assert(!player_to_test.can_buy?(cost_key), 'Cannot develop without resource type ' + required_array.last[0].to_s)
+        end
       end
       player_to_test.receive(required_array.last[0], required_array.last[1])
-      assert(player_to_test.can_buy?(cost_key), 'Can develop required resource types')
+      assert(player_to_test.can_buy?(cost_key), 'Can develop with required resource types')
     end  
   end
 

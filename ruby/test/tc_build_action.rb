@@ -26,6 +26,7 @@ class TC_BuildAction < Test::Unit::TestCase
     assert(fake_player.resources[Resource::GRAIN]=-1)
     assert(fake_player.resources[Resource::LUMBER]=-1)
     assert(fake_player.resources[Resource::BRICK]=-1)
+    assert(fake_player.resources[Resource::SETTLEMENT]=-1)
   end
 
   def test_city_build_action
@@ -33,6 +34,8 @@ class TC_BuildAction < Test::Unit::TestCase
     check_action_prompts_costs_and_vertex_setup(BuildingType::SETTLEMENT, fake_player)
     assert(fake_player.resources[Resource::GRAIN]=-2)
     assert(fake_player.resources[Resource::ORE]=-3)
+    assert(fake_player.resources[Resource::SETTLEMENT]=1)
+    assert(fake_player.resources[Resource::CITY]=-1)
   end
 
   def check_action_prompts_costs_and_vertex_setup(building_type, fake_player)

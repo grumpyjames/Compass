@@ -12,18 +12,6 @@ class Player
   def resources
     @resources
   end
-  def can_develop?
-    @resources[Resource::WOOL] > 0 && @resources[Resource::ORE] > 0 && @resources[Resource::GRAIN] > 0
-  end
-  def can_road?
-    @resources[Resource::BRICK] > 0 && @resources[Resource::LUMBER] > 0
-  end
-  def can_settlement?
-    @resources[Resource::WOOL] > 0 && @resources[Resource::LUMBER] > 0 && @resources[Resource::GRAIN] > 0 && @resources[Resource::BRICK] 
-  end
-  def can_ship?
-    @resources[Resource::WOOL] > 0 && @resources[Resource::LUMBER] > 0
-  end
 
   def can_buy?(buyable)
     Costs::COSTS[buyable].each do |k,v|
