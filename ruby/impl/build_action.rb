@@ -2,17 +2,22 @@ require '../impl/costs.rb'
 require '../impl/building.rb'
 require '../impl/building_type.rb'
 
-class BuildSettlementAction
+class BuildAction
+
+  def initialize(building_type)
+    @building_type = building_type
+  end
+  
   def execute(player, board)
     row_response = player.prompt("Which row do you want to build upon?", build_options("Row",board.rows)).to_i - 1
     hex_response = player.prompt("Which hex do you want to build upon?", build_hex_options(board,row_response)).to_i - 1
     hex = board.hex_at(row_response, hex_response)
     vertex_response = player.prompt("Which vertex do you want to build upon?", build_vertex_options(player,hex)).to_i - 1
-    Costs::COSTS[BuildingType::SETTLEMENT].each do |resource,quantity|
+    Costs::COSTS[@building_type].each do |resource,quantity|
       player.receive(resource, quantity * -1)
     end
     vertex = hex[vertex_response]
-    settlement = Building.new(BuildingType::SETTLEMENT, player, vertex)
+    settlement = Building.new(@building_type, player, vertex)
   end
 
   private
