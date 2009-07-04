@@ -1,9 +1,0 @@
-require 'test/unit'
-require 'fakevertex.rb'
-class TC_building
-
-  def test_build_on_vertex
-    a_fake_vertex = FakeVertex.new
-    
-  end
-end

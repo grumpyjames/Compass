@@ -1,5 +1,0 @@
-class EdgeBuildingType
-  ROAD = 10
-  SHIP = 11
-  
-end
