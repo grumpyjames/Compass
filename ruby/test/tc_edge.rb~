@@ -1,0 +1,4 @@
+require 'test/unit'
+  class TC_Edge < Test::Unit::TestCase
+    
+  end

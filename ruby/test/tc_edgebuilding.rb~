@@ -1,0 +1,6 @@
+require 'test/unit'
+require '../impl/edge_building.rb'
+
+class TC_edge_building
+
+end

@@ -1,0 +1,5 @@
+require 'test/unit'
+
+class TC_boardrow < Test::Unit::TestCase
+
+end

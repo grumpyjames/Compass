@@ -1,0 +1,15 @@
+class FakeVertex
+  @harvested
+  def initialize
+    @harvested = Hash.new(0)               
+  end
+  def distribute( resource ) # of type resource
+    @harvested[resource] += 1
+  end
+  def harvested
+    @harvested
+  end
+  def build(building)
+    @building = building
+  end
+end

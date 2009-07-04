@@ -1,0 +1,3 @@
+class FakeBoard
+
+end

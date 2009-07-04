@@ -1,0 +1,8 @@
+require 'test/unit'
+
+class TC_Vertex < Test::Unit::TestCase
+  def test_empty
+    vertex_to_test = Vertex.new()
+    assert(vertex.is_empty?, 'Vertex should have been empty but was not')
+  end
+end
