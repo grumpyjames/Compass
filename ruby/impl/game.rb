@@ -11,5 +11,11 @@ class Game
       player.prompt("What do you want to do?",[["b","build"],["l","look"],["r","roll"],["p","play card"],["t","trade"]]) 
     end
   end
+  
+  def each_player(player_closure)
+    @players.each do |player|
+      player_closure.call(player)
+    end
+  end
 
 end
