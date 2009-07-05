@@ -3,6 +3,7 @@ require '../test/fakevertex.rb'
 require '../test/fake_hex.rb'
 require '../test/fake_player.rb'
 require '../test/fake_board.rb'
+require '../test/fake_game.rb'
 require '../impl/building.rb'
 require '../impl/resource.rb'
 require '../impl/building_type.rb'
@@ -43,13 +44,14 @@ class TC_BuildAction < Test::Unit::TestCase
     fake_player.add_responses(["1","2","4"])
     fake_board = FakeBoard.new
     fake_board.set_dimensions(3,3)
+    fake_game = FakeGame.new([],fake_board)
     fake_vertex = FakeVertex.new
     fake_player.allow_build_on(fake_vertex)
     cannot_build_on_this_vertex = FakeVertex.new
     fake_hex = FakeHex.new(Resource::WOOL, 5, [cannot_build_on_this_vertex,cannot_build_on_this_vertex,cannot_build_on_this_vertex,
                                                fake_vertex,cannot_build_on_this_vertex,cannot_build_on_this_vertex])
     fake_board.hexes = [[nil,fake_hex,nil],[],[]]
-    action_to_test.execute(fake_player, fake_board)
+    action_to_test.execute(fake_player, fake_game)
     assert(fake_player.options[0]==build_options("Row",3))
     check_useful_options(fake_player.options[1],build_options("Hex",3),"")
     check_useful_options(fake_player.options[2],[["4","Vertex 4"]], "Should only be prompted to build on valid vertices")

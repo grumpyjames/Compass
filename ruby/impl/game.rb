@@ -16,4 +16,8 @@ class Game
     end
   end
 
+  def board
+    @board
+  end
+
 end

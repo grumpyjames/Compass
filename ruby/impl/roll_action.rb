@@ -7,10 +7,10 @@ class RollAction
     @dice = dice
   end
   
-  def execute(board, player)
+  def execute(game, player)
     @last_score = @dice.roll
     if @last_score!=7
-      board.harvest(@last_score)
+      game.board.harvest(@last_score)
     end
   end
 

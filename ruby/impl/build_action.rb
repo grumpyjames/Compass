@@ -8,7 +8,8 @@ class BuildAction
     @building_type = building_type
   end
   
-  def execute(player, board)
+  def execute(player, game)
+    board = game.board
     row_response = player.prompt("Which row do you want to build upon?", build_options("Row",board.rows)).to_i - 1
     hex_response = player.prompt("Which hex do you want to build upon?", build_hex_options(board,row_response)).to_i - 1
     hex = board.hex_at(row_response, hex_response)
