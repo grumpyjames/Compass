@@ -7,7 +7,7 @@ require '../impl/building_type.rb'
 require '../test/fakevertex.rb'
 require '../test/fake_edge.rb'
 
-class FakeGame
+class SimpleFakeGame
   def next_turn
     @next_called = true
   end
@@ -91,7 +91,7 @@ class TC_player < Test::Unit::TestCase
   
   def test_end_of_turn
     player_to_test = Player.new
-    a_fake_game = FakeGame.new
+    a_fake_game = SimpleFakeGame.new
     player_to_test.add_to_game(a_fake_game)
     player_to_test.end_turn
     assert(a_fake_game.next_called)
