@@ -7,9 +7,7 @@ class Game
   end
   
   def next_turn
-    @players.each do |player| 
-      player.prompt("What do you want to do?",[["b","build"],["l","look"],["r","roll"],["p","play card"],["t","trade"]]) 
-    end
+    self.each_player( lambda {  |player| player.prompt("What do you want to do?",[["b","build"],["l","look"],["r","roll"],["p","play card"],["t","trade"]]) } )
   end
   
   def each_player(player_closure)
