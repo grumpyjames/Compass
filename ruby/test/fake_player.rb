@@ -51,4 +51,10 @@ class FakePlayer
   def can_build_on_vertex(vertex)
     @buildable_vertices[vertex]
   end
+  def discard
+    @discarded = true
+  end
+  def discarded
+    @discarded
+  end
 end
