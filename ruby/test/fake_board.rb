@@ -1,5 +1,9 @@
 class FakeBoard
 
+  def initialize
+    @harvested = []
+  end
+
   def set_dimensions(rows, cols)
     @rows=rows
     @cols=cols
@@ -22,4 +26,11 @@ class FakeBoard
     @cols
   end
   
+  def harvest(score)
+    @harvested.push(score)
+  end
+
+  def harvested
+    @harvested
+  end
 end
