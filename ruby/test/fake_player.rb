@@ -57,4 +57,13 @@ class FakePlayer
   def discarded
     @discarded
   end
+  
+  def false_method(caller)
+	@false_method_caller = caller
+  end
+  
+  def false_method_caller
+	@false_method_caller
+  end
+  
 end
