@@ -1,8 +1,18 @@
 require '../impl/player.rb'
 
-class CancelWrapperAction #implements BaseAction, Player
+class CancelException < Exception
+	def initialize(message)
+		@message = message
+	end
+	
+	def message
+		@message
+	end	
+end
 
-	OPTION = ["C","Cancel this action",""]
+class CancelWrapperAction #implements BaseAction, Player
+	CANCEL_RESPONSE = "C"
+	OPTION = [CANCEL_RESPONSE,"Cancel this action",""]
 	def initialize(previous_action, current_cancellable_action)
 		@previous_action = previous_action
 		@wrapped_action = current_cancellable_action
@@ -10,12 +20,21 @@ class CancelWrapperAction #implements BaseAction, Player
 	
 	def execute(board, player)
 		@wrapped_player = player
-		@wrapped_action.execute(board, self)
+		begin
+			@wrapped_action.execute(board, self)
+		rescue CancelException #we're throwing a cancel exception at the wrapped action to stop it: see below
+			@previous_action.execute(board, player)
+		end
 	end
 	
 	def prompt(question, options)
 		options.push(OPTION)
-		@wrapped_player.prompt(question, options)
+		response = @wrapped_player.prompt(question, options)
+		if response==CANCEL_RESPONSE
+			@wrapped_action.cancel
+			raise CancelException.new("This action has been cancelled. This exception should be caught by the wrapper")
+		end
+		response
 	end
 	
 	def method_missing(sym, *args, &block)
