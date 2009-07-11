@@ -1,0 +1,55 @@
+Compass.
+
+Contents
+0. Extremely important caveat
+1. What is Compass?
+2. What is Compass not?
+2. What can I do with Compass?
+3. How do I contribute?
+4. The code itself
+	a. The ruby prototype - a command line Catan
+	b. The java objects - ready for GUI hooks
+
+0. Extremely important caveat
+
+This code has absolutely no license agreement from the owners of the Settlers of Catan IP or trademarks. At the moment this is very much 
+a vanity project to give the project founder an opportunity to flex his ruby and Java muscles. Thus, *any* use of this code to create fully
+working Catan executables is potentially, from a legal standpoint, extremely unwise, and the project owner(s) do not indemnify you in any way
+against this risk.
+	
+1. What is Compass?
+
+Compass is an open source library to represent the objects and rules of the game Settlers of Catan.
+
+Compass will be fully prototyped in ruby as a playable (well, almost) command line game.
+
+Compass will eventually provide a java implementation of the game's objects, rules engine and actions, each provided with
+hooks for a user interface to plug into and receive callbacks from.
+
+Compass is, essentially, a vanity project for the time being - there being obvious licensing issues should
+this code ever be used commercially.
+
+2. What is Compass not?
+
+Compass is not, and never will be, a GUI based Settlers of Catan executable
+Compass is not a Server/Client project to allow networked games of Settlers of Catan (there's nothing to stop you extending it thusly, though)
+Compass is in no way associated with the original creators of Settlers of Catan, and it isn't licensed by them either.
+
+3. What can I do with Compass?
+
+You could potentially use Compass as a base set of libraries upon which to base your own extension to the original SoC 
+game rules. The framework provided by the libraries should make this considerably easier to do this than creating your own 
+structures from scratch, and the way to tie in your additions should (especially via the use of Spring in the java area) be
+fairly intuitive.
+
+The main intended use is to act a clean interface to the rules and objects of the game itself; so, as a client of the code
+you have all the hooks you need to control and view how the game is unfolding. If you're into your patterns, Compass is very
+much the Model and Controller of the game - you will have to provide the View, and suitable methods of acting upon it.
+
+4a. Ruby code
+
+TODO: Write about how the ruby code works, development practice, etc.
+
+b. Java code
+
+TODO: Write about how the Java code works, development practice, etc.
