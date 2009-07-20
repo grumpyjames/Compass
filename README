@@ -4,9 +4,9 @@ Contents
 0. Extremely important caveat
 1. What is Compass?
 2. What is Compass not?
-2. What can I do with Compass?
-3. How do I contribute?
-4. The code itself
+3. What can I do with Compass?
+4. How do I contribute?
+5. The code itself
 	a. The ruby prototype - a command line Catan
 	b. The java objects - ready for GUI hooks
 
@@ -19,7 +19,7 @@ against this risk.
 	
 1. What is Compass?
 
-Compass is an open source library to represent the objects and rules of the game Settlers of Catan.
+Compass is an open source library (MIT license) to represent the objects and rules of the game Settlers of Catan.
 
 Compass will be fully prototyped in ruby as a playable (well, almost) command line game.
 
@@ -46,7 +46,12 @@ The main intended use is to act a clean interface to the rules and objects of th
 you have all the hooks you need to control and view how the game is unfolding. If you're into your patterns, Compass is very
 much the Model and Controller of the game - you will have to provide the View, and suitable methods of acting upon it.
 
-4a. Ruby code
+4. How can I contribute?
+
+Take a fork and submit UNIT TESTED patches. The existing classes should illustrate the functionality not yet added,
+also, the ruby prototype may shed light on features not yet implemented in the java implementation.
+
+5a. Ruby code
 
 TODO: Write about how the ruby code works, development practice, etc.
 
