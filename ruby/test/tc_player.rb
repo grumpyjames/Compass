@@ -63,6 +63,7 @@ class TC_player < Test::Unit::TestCase
     expected_resources[Resource::WOOL] = 4
     expected_resources[Resource::GRAIN] = 1
     expected_resources[Resource::LUMBER] = 3
+    assert(player_to_test.resource_count == 8)
     assert(player_to_test.resources == expected_resources, 'Unexpected resource found')
   end
 

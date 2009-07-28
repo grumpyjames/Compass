@@ -6,11 +6,25 @@ class Player
     @stdout = stdout
     @actions = []
   end
+
   def receive( resource, quantity )
     @resources[resource] += quantity
   end
+
   def resources
     @resources
+  end
+
+  def resource_count
+    count = 0
+    @resources.each do |k,v| 
+      p k.to_s + " " + v.to_s
+      if Resource::RESOURCES.include?(k)
+        p k.to_s + " " + v.to_s
+        count+=v
+      end
+    end
+    count
   end
 
   def can_buy?(buyable)
