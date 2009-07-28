@@ -18,9 +18,7 @@ class Player
   def resource_count
     count = 0
     @resources.each do |k,v| 
-      p k.to_s + " " + v.to_s
       if Resource::RESOURCES.include?(k)
-        p k.to_s + " " + v.to_s
         count+=v
       end
     end

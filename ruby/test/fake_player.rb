@@ -13,6 +13,15 @@ class FakePlayer
   def resources
     @resources
   end
+  def resource_count
+    count = 0
+    @resources.each do |k,v| 
+      if Resource::RESOURCES.include?(k)
+        count+=v
+      end
+    end
+    count
+  end
   def add_to_game(game)
     @game = game
   end
@@ -55,15 +64,15 @@ class FakePlayer
     @discarded = true
   end
   def discarded
-    @discarded
+    @discarded==nil ? false : true
   end
   
   def false_method(caller)
-	@false_method_caller = caller
+    @false_method_caller = caller
   end
   
   def false_method_caller
-	@false_method_caller
+    @false_method_caller
   end
   
 end
